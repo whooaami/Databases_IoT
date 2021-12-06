@@ -1,0 +1,13 @@
+USE students;
+
+DROP function IF EXISTS MaxBirthday;
+
+DELIMITER //
+CREATE FUNCTION MaxBirthday()
+RETURNS DATE
+DETERMINISTIC
+BEGIN
+	RETURN (SELECT MAX(birthday_date) FROM student);
+END//
+DELIMITER ;
+SELECT MaxBirthday();
